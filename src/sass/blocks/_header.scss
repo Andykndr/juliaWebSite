@@ -1,0 +1,245 @@
+@keyframes heartbeat {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(0, 0) scale(1.2);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.header {
+  background: url('../img/promo/background.jpg') center (center/cover) no-repeat;
+  width: 100%;
+  &_logo {
+    width: 120px;
+    height: auto;
+    img {
+      width: 100%;
+      animation: heartbeat 5s ease infinite;
+      &:hover {
+        animation-play-state: paused;
+      }
+    }
+  }
+  &_promo {
+    padding-right: 100px;
+  }
+  &_promo,
+  &_promo_contact {
+    display: flex;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    a {
+      margin-right: 40px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 300;
+      &:last-child {
+        margin-right: 10px;
+      }
+    }
+    & .gpsIcon {
+      position: relative;
+      margin-right: 20px;
+      & img {
+        position: absolute;
+        left: -25px;
+        width: 20px;
+        height: 20px;
+      }
+    }
+    & .phoneIcon {
+      position: relative;
+      &::before {
+        content: '\1F57B';
+        display: inline-block;
+        transform: rotate(-45deg);
+        position: absolute;
+        left: -20px;
+        top: 9px;
+        font-size: 25px;
+        line-height: 1px;
+      }
+    }
+  }
+  &_wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+}
+.hamburger {
+  display: none;
+}
+
+.mobile_nav {
+  display: none;
+  transition: all 0.6s;
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+@media (max-width: 992px) {
+  .header {
+    &_promo {
+      padding-right: 10px;
+    }
+    &_wrapper {
+      display: grid;
+      grid-template-columns: 1fr 2fr 2fr;
+      gap: 30px;
+    }
+    .promo {
+      & h1 {
+        font-size: 3em;
+      }
+      & p {
+        font-size: 16px;
+      }
+      &-info {
+        grid-template-columns: 2fr 1fr;
+      }
+    }
+  }
+
+  .header_promo a,
+  .header_promo_contact a {
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    &_promo {
+      display: none;
+      &_contact {
+        display: none;
+      }
+    }
+    & .promo {
+      & h1 {
+        font-size: 2.5em;
+      }
+      & p {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .mobile_nav_active {
+    font-size: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+      109.6deg,
+      rgba(0, 0, 0, 0.898) 11.2%,
+      rgba(37, 35, 35, 0.938) 78.9%
+    );
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInDown 0.6s ease-out forwards;
+    animation-delay: 0.1s;
+  }
+
+  .mobile_nav a {
+    padding: 40px;
+    color: white;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInUp 0.6s ease-out forwards;
+    animation-delay: 0.2s;
+  }
+  .mobile_contact {
+    padding-left: 20px;
+    display: flex;
+    position: absolute;
+    bottom: 50px;
+    flex-direction: column;
+    align-items: start;
+    a {
+      padding: 10px 0;
+      font-size: 20px;
+      & span {
+        background-color: transparent;
+      }
+    }
+  }
+
+  .hamburger {
+    z-index: 1220;
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: -60px;
+    width: 25px;
+    &_active {
+      span {
+        margin-bottom: -2px;
+        &:first-child {
+          transform: rotate(-45deg);
+        }
+        &:nth-child(2) {
+          display: none;
+        }
+        &:last-child {
+          transform: rotate(45deg);
+        }
+      }
+    }
+
+    &_fixed {
+      z-index: 10;
+      position: fixed;
+      top: 20px;
+      right: 100px;
+    }
+  }
+  span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 4px;
+    transition: all 0.5s;
+  }
+}
+
+@media (max-width: 576px) {
+  .header {
+    &_logo {
+      position: absolute;
+      top: 20px;
+      left: 15px;
+    }
+  }
+}

@@ -1,0 +1,121 @@
+.reviews_wrapper {
+  padding: 50px 0;
+  & h2 {
+    font-size: 35px;
+  }
+}
+.reviews-slider-wrapper {
+  margin-top: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  & .slide {
+    flex: 0 0 100%;
+    box-sizing: border-box;
+    padding: 20px 0;
+    text-align: center;
+    & .review-content {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+.review_block {
+  text-align: justify;
+  & .review_text {
+    text-align: justify;
+    color: #ffffffd1;
+    font-size: 14px;
+    font-weight: 300;
+  }
+  & h3 {
+    position: relative;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    &::after {
+      position: absolute;
+      content: '';
+      width: 70%;
+      height: 1px;
+      background-color: #ffffff6e;
+      top: 50%;
+      right: 0;
+    }
+  }
+}
+.review_photo {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 150px;
+  & img {
+    width: 100%;
+  }
+}
+
+.slider-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 90px;
+  display: flex;
+  justify-content: flex-start;
+  & .indicator-dot {
+    width: 30px;
+    height: 3px;
+    background-color: #ffffff57;
+    cursor: pointer;
+  }
+}
+
+.prev-btn,
+.next-btn {
+  position: absolute;
+  bottom: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 2em;
+  font-weight: 100;
+  width: 30px;
+  height: 50px;
+}
+.prev-btn {
+  left: 45px;
+}
+.next-btn {
+  left: 230px;
+}
+
+@media (max-width: 576px) {
+  .slider {
+    & .slide {
+      & .review-content {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(1, 0.5fr, 1fr);
+        gap: 50px;
+      }
+    }
+  }
+  .slider-indicator {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -15%);
+  }
+  .prev-btn,
+  .next-btn {
+    top: 38%;
+    height: 30px;
+  }
+  .prev-btn {
+    left: 20%;
+  }
+  .next-btn {
+    left: 72%;
+  }
+}
